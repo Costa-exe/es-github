@@ -26,6 +26,14 @@ class Actor:
 
         return actor_by_id
 
+    def getBestActorsName(self):
+        d = MySql()
+        d.execute(f"select count(fa.film_id) as num_film, a.first_name, a.last_name from actor a, film_actor fa where a.actor_id = fa.actor_id having num_film > 15")
+        best_actors = d.fetchall()
+        d.close_connection()
+
+        return best_actors
+
 
 actors = Actor()
 
