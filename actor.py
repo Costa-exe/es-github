@@ -18,8 +18,17 @@ class Actor:
 
         return all_actors_by_film
 
+    def getActorById(self, id):
+        c = MySql()
+        c.execute(f"select first_name, last_name from actor where actor_id = '{id}'")
+        actor_by_id = c.fetchall()
+        c.close_connection()
+
+        return actor_by_id
+
 
 actors = Actor()
 
 print(actors.getAllActors())
 print(actors.getAllActorsByFilm('ACADEMY DINOSAUR'))
+print(actors.getActorById('1'))
