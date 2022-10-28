@@ -4,7 +4,7 @@ class Actor:
 
     def getAllActors(self):
         a = MySql()
-        a.execute("select * from actor")
+        a.execute("select * from actor order by last_name ")
         all_actors = a.fetchall()
         a.close_connection()
 
