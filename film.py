@@ -9,6 +9,14 @@ class Film:
 
         return all_film
 
+    def getFilmByTitle(self, title):
+        d = MySql()
+        d.execute(f"select * from film where title = '{title}'")
+        film_by_title = d.fetchall()
+        d.close_connection()
+
+        return film_by_title
+
     def getFilmByLength(self):
         a = MySql()
         a.execute("select * from film where length > 120")
@@ -19,4 +27,5 @@ class Film:
 film = Film()
 
 print(film.getAllFilm())
+print(film.getFilmByTitle('ACE GOLDFINGER'))
 print(film.getFilmByLength())
