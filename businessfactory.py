@@ -1,4 +1,3 @@
-from itertools import count
 from actor import Actor
 
 class BusinessFactory:
